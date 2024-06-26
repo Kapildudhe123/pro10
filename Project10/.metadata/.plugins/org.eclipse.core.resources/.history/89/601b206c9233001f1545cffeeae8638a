@@ -1,0 +1,82 @@
+package com.rays.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
+import com.rays.common.BaseDAOImpl;
+import com.rays.common.UserContext;
+import com.rays.dto.ClientDTO;
+import com.rays.dto.IssueDTO;
+
+public class IssueDAOImpl extends BaseDAOImpl<IssueDTO> implements IssueDAOInt{
+	
+	@Override
+	protected List<Predicate> getWhereClause(IssueDTO dto, CriteriaBuilder builder, Root<IssueDTO> qRoot) {
+		// Create where conditions
+		List<Predicate> whereCondition = new ArrayList<Predicate>();
+
+		if (!isEmptyString(dto.getTitle())) {
+
+			whereCondition.add(builder.like(qRoot.get("title"), dto.getName() + "%"));
+		}
+		
+		return whereCondition;
+
+	}
+
+	@Override
+	public Class<IssueDTO> getDTOClass() {
+
+		return IssueDTO.class;
+	}
+
+	@Override
+	public long add(IssueDTO dto, UserContext userContext) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void update(IssueDTO dto, UserContext userContext) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(IssueDTO dto, UserContext userContext) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List search(IssueDTO dto, int pageNo, int pageSize, UserContext userContext) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List search(IssueDTO dto, UserContext userContext) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public com.rays.dao.IssueDTO findByPK(long pk, UserContext userContext) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public com.rays.dao.IssueDTO findByUniqueKey(String attribute, Object val, UserContext userContext) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
+
+
+}
